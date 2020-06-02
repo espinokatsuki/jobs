@@ -5,7 +5,14 @@
     <title>Home Page</title>
 </head>
 <body>
-<h1 th:text="${message}">Welcome to jobs app!</h1>
-<h2>Hoy es [[${date}]]</h2>
+<div>
+    <h1>Welcome</h1>
+    <h2>Job offer</h2>
+
+    <h3 th:text="'Job title: ' + ${name}"></h3>
+    <h3 th:text="'Salary: ' + ${salary}"></h3>
+    <h3 th:text="'Publication date: ' + ${publicationDate}"></h3>
+    <h3 th:text="'Active: ' + ${active}"></h3>
+</div>
 </body>
 </html>

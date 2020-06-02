@@ -10,9 +10,17 @@ import java.util.Date;
 public class HomeController {
 
     @GetMapping("/")
-    public String ShowHome(Model model) {
-        model.addAttribute("message", "Welcome to Jobs App!");
-        model.addAttribute("date", new Date());
+    public String showHome(Model model) {
+        String name = "Frontend developer";
+        Date publicationDate = new Date();
+        Double salary = 5000.0;
+        Boolean active = Boolean.TRUE;
+
+        model.addAttribute("name", name);
+        model.addAttribute("publicationDate", publicationDate);
+        model.addAttribute("salary", salary);
+        model.addAttribute("active", active);
+
         return "home";
     }
 }
