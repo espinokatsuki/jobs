@@ -72,6 +72,7 @@ public class HomeController {
             vacant1.setPublicationDate(simpleDateFormat.parse("03-06-2020"));
             vacant1.setActive(Boolean.TRUE);
             vacant1.setHighlighted(1);
+            vacant1.setImage("empresa1.png");
 
             Vacant vacant2 = new Vacant();
             vacant2.setId(2);
@@ -81,6 +82,7 @@ public class HomeController {
             vacant2.setPublicationDate(simpleDateFormat.parse("02-06-2020"));
             vacant2.setActive(Boolean.TRUE);
             vacant2.setHighlighted(0);
+            vacant2.setImage("empresa2.png");
 
             Vacant vacant3 = new Vacant();
             vacant3.setId(3);
