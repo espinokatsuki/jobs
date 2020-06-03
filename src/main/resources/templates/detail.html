@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Detail</title>
+</head>
+<body>
+<div>
+    <h1 th:text="'Job title: ' + ${vacant.name}"></h1>
+    <h1 th:text="'Job description: ' + ${vacant.description}"></h1>
+    <h1 th:text="'Job salary: ' + ${vacant.salary}"></h1>
+</div>
+</body>
+</html>

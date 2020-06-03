@@ -1,5 +1,6 @@
 package io.maya.jobs.controller;
 
+import io.maya.jobs.model.Vacant;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,17 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+    @GetMapping("/detail")
+    public String getDetail(Model model) {
+        Vacant vacant = new Vacant();
+        vacant.setName("SCRUM Master");
+        vacant.setDescription("Coordinate software areas");
+        vacant.setSalary(1000.0);
+        vacant.setActive(Boolean.TRUE);
+        model.addAttribute("vacant", vacant);
+        return "detail";
+    }
 
     @GetMapping("/list")
     public String showList(Model model) {
