@@ -10,12 +10,14 @@
 <div class="container">
     <h1 class="text-primary">Vancants</h1>
     <table class="table table-striped table-bordered table-hover">
+        <caption>Offered vacants</caption>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Salary</th>
             <th scope="col">Publication date</th>
+            <th scope="col">Highlighted</th>
         </tr>
         <tr th:each="vacant: ${vacantList}">
             <th th:text="${vacant.id}" scope="row"></th>
@@ -23,6 +25,10 @@
             <td th:text="${vacant.description}"></td>
             <td th:text="${vacant.salary}"></td>
             <td th:text="${vacant.publicationDate}"></td>
+            <td>
+                <span th:if="${vacant.highlighted == 1}" class="badge badge-success">Yes</span>
+                <span th:unless="${vacant.highlighted == 1}" class="badge badge-danger">No</span>
+            </td>
         </tr>
     </table>
 </div>

@@ -71,6 +71,7 @@ public class HomeController {
             vacant1.setSalary(1000.0);
             vacant1.setPublicationDate(simpleDateFormat.parse("03-06-2020"));
             vacant1.setActive(Boolean.TRUE);
+            vacant1.setHighlighted(1);
 
             Vacant vacant2 = new Vacant();
             vacant2.setId(2);
@@ -79,6 +80,7 @@ public class HomeController {
             vacant2.setSalary(2000.0);
             vacant2.setPublicationDate(simpleDateFormat.parse("02-06-2020"));
             vacant2.setActive(Boolean.TRUE);
+            vacant2.setHighlighted(0);
 
             Vacant vacant3 = new Vacant();
             vacant3.setId(3);
@@ -87,6 +89,7 @@ public class HomeController {
             vacant3.setSalary(3000.0);
             vacant3.setPublicationDate(simpleDateFormat.parse("01-06-2020"));
             vacant3.setActive(Boolean.TRUE);
+            vacant3.setHighlighted(1);
 
             vacantList.add(vacant1);
             vacantList.add(vacant2);

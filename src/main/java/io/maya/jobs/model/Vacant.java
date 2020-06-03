@@ -10,14 +10,7 @@ public class Vacant {
     private Double salary;
     private Boolean active;
     private Date publicationDate;
-
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
+    private Integer highlighted;
 
     public Integer getId() {
         return id;
@@ -59,6 +52,22 @@ public class Vacant {
         this.active = active;
     }
 
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public Integer getHighlighted() {
+        return highlighted;
+    }
+
+    public void setHighlighted(Integer highlighted) {
+        this.highlighted = highlighted;
+    }
+
     @Override
     public String toString() {
         return "Vacant{" +
@@ -67,6 +76,8 @@ public class Vacant {
                 ", description='" + description + '\'' +
                 ", salary=" + salary +
                 ", active=" + active +
+                ", publicationDate=" + publicationDate +
+                ", highlighted=" + highlighted +
                 '}';
     }
 }
