@@ -1,5 +1,7 @@
 package io.maya.jobs.model;
 
+import java.util.Date;
+
 public class Vacant {
 
     private Integer id;
@@ -7,6 +9,15 @@ public class Vacant {
     private String description;
     private Double salary;
     private Boolean active;
+    private Date publicationDate;
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
 
     public Integer getId() {
         return id;
