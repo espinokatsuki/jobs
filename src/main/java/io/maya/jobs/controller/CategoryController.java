@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CategoryController {
 
-    @GetMapping("/categories/list")
+    @GetMapping("/list")
     public String listCategories() {
         return "categories/listCategories";
     }
 
-    @GetMapping("/categories/create")
+    @GetMapping("/create")
     public String createCategory() {
         return "categories/createCategories";
     }
 
-    @PostMapping("/categories/save")
+    @PostMapping("/save")
     public String saveCategory() {
         return "categories/listCategories";
     }
