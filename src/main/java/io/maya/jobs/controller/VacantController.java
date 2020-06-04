@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,14 +28,28 @@ public class VacantController {
         return "vacant/index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/view/{id}")
     public String getById(@PathVariable("id") int id, Model model) {
         // TODO: Search vacant in DDBB
         model.addAttribute("vacant", vacantList.get(id - 1));
-        logger.info("Vacant {} called = {}", id, vacantList.get(id - 1));
+        logger.info("Vacant {} called: {}", id, vacantList.get(id - 1));
         return "vacant/detail";
     }
 
+    @GetMapping("/delete")
+    public String deleteById(@RequestParam("id") int id, Model model) {
+        // TODO: Delete vacant in DDBB
+        for (Vacant vacant :
+                vacantList) {
+            if (vacant.getId() == id) {
+                model.addAttribute("id", id);
+                logger.info("Vacant {} deleted: {}", id, vacant);
+                vacantList.remove(vacant);
+                break;
+            }
+        }
+        return "vacant/delete";
+    }
 
     private List<Vacant> createVacantList() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
