@@ -5,13 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,6 +47,27 @@ public class VacantController {
             }
         }
         return "vacant/delete";
+    }
+
+    @GetMapping("/create")
+    public String create() {
+        return "vacant/create";
+    }
+
+    @PostMapping("/save")
+    public String save(@RequestParam("id") int id, @RequestParam("name") String name,
+                       @RequestParam("description") String description, @RequestParam("salary") double salary,
+                       Model model) {
+        Vacant vacant = new Vacant();
+        vacant.setId(id);
+        vacant.setName(name);
+        vacant.setDescription(description);
+        vacant.setSalary(salary);
+        vacant.setPublicationDate(new Date());
+        vacantList.add(vacant);
+        logger.info("Vacant added: {}", vacant);
+        model.addAttribute("name", name);
+        return "vacant/added";
     }
 
     private List<Vacant> createVacantList() {

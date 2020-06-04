@@ -2,23 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Vacant List</title>
+    <title>Create Vacant</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
     <img th:src="@{/images/logo.png}" alt="Jobs Logo" width="50px" height="50px">
-    <h1 class="text-primary">Vancants</h1>
-    <br>
-    <h3 th:text="'ID: ' + ${vacant.id}"></h3>
-    <h3 th:text="'Name: ' + ${vacant.name}"></h3>
-    <h3 th:text="'Description: ' + ${vacant.description}"></h3>
-    <h3 th:text="'Salary: ' + ${vacant.salary}"></h3>
-    <h3 th:text="'Publication date: ' + ${vacant.publicationDate}"></h3>
-    <a href="/vacants/">
-        <button type="button" class="btn btn-primary">Return</button>
-    </a>
+    <h1 class="text-primary">Create vacant</h1>
+    <form th:action="@{/vacants/save}" method="post">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input name="id" type="text" class="form-control" id="id">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input name="name" type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input name="description" type="text" class="form-control" id="description">
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input name="salary" type="text" class="form-control" id="salary">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
