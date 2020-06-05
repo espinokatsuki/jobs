@@ -3,12 +3,14 @@ package io.maya.jobs.service;
 import io.maya.jobs.model.Vacant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class VacantServiceImp implements IVacantService {
 
     private final Logger logger = LoggerFactory.getLogger(VacantServiceImp.class);
