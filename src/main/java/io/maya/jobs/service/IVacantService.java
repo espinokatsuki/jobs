@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IVacantService {
     List<Vacant> getAll();
+
+    Vacant getById(Integer id);
 }

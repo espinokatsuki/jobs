@@ -63,4 +63,17 @@ public class VacantServiceImp implements IVacantService {
         return vacantList;
     }
 
+    @Override
+    public Vacant getById(Integer id) {
+        Vacant vacant;
+        try {
+            vacant = vacantList.get(id - 1);
+        } catch (IndexOutOfBoundsException exception) {
+            vacant = new Vacant();
+            logger.error("Vacant with id: {} not found", id);
+        }
+        return vacant;
+    }
+
+
 }

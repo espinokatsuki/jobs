@@ -30,16 +30,14 @@ public class VacantController {
 
     @GetMapping("/view/{id}")
     public String getById(@PathVariable("id") int id, Model model) {
-        // TODO: Search vacant in DDBB
-        List<Vacant> vacantList = vacantService.getAll();
-        model.addAttribute("vacant", vacantList.get(id - 1));
-        logger.info("Vacant {} called: {}", id, vacantList.get(id - 1));
+        Vacant vacant = vacantService.getById(id);
+        model.addAttribute("vacant", vacant);
+        logger.info("Vacant {} called: {}", id, vacant);
         return "vacant/detail";
     }
 
     @GetMapping("/delete")
     public String deleteById(@RequestParam("id") int id, Model model) {
-        // TODO: Delete vacant in DDBB
         List<Vacant> vacantList = vacantService.getAll();
         for (Vacant vacant :
                 vacantList) {
