@@ -22,7 +22,13 @@
         <div class="card">
             <h4 class="card-header"><strong>Datos de la oferta de trabajo</strong></h4>
             <div class="card-body">
-                <form th:action="@{/vacants/save}" method="post">
+                <form th:action="@{/vacants/save}" method="post" th:object="${vacant}">
+                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                        Please correct these errors:
+                        <ul>
+                            <il th:each="error : ${#fields.errors('*')}" th:text="${error}"></il>
+                        </ul>
+                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name">

@@ -48,7 +48,7 @@ public class VacantController {
     }
 
     @GetMapping("/create")
-    public String create() {
+    public String create(Vacant vacant) {
         return "vacant/create";
     }
 
