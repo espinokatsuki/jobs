@@ -21,13 +21,6 @@ public class VacantController {
     @Autowired
     private IVacantService vacantService;
 
-    @GetMapping("")
-    public String listAll(Model model) {
-        List<Vacant> vacantList = vacantService.getAll();
-        model.addAttribute("vacantList", vacantList);
-        return "vacant/index";
-    }
-
     @GetMapping("/view/{id}")
     public String getById(@PathVariable("id") int id, Model model) {
         Vacant vacant = vacantService.getById(id);
@@ -57,19 +50,7 @@ public class VacantController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam("id") int id, @RequestParam("name") String name,
-                       @RequestParam("description") String description, @RequestParam("salary") double salary,
-                       Model model) {
-        List<Vacant> vacantList = vacantService.getAll();
-        Vacant vacant = new Vacant();
-        vacant.setId(id);
-        vacant.setName(name);
-        vacant.setDescription(description);
-        vacant.setSalary(salary);
-        vacant.setPublicationDate(new Date());
-        vacantList.add(vacant);
-        logger.info("Vacant added: {}", vacant);
-        model.addAttribute("name", name);
+    public String save() {
         return "vacant/added";
     }
 

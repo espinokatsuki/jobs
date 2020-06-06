@@ -28,7 +28,7 @@ public class VacantServiceImp implements IVacantService {
             vacant1.setPublicationDate(simpleDateFormat.parse("03-06-2020"));
             vacant1.setActive(Boolean.TRUE);
             vacant1.setHighlighted(1);
-            vacant1.setImage("empresa1.png");
+            vacant1.setImage("logo1.png");
 
             Vacant vacant2 = new Vacant();
             vacant2.setId(2);
@@ -38,7 +38,7 @@ public class VacantServiceImp implements IVacantService {
             vacant2.setPublicationDate(simpleDateFormat.parse("02-06-2020"));
             vacant2.setActive(Boolean.TRUE);
             vacant2.setHighlighted(0);
-            vacant2.setImage("empresa2.png");
+            vacant2.setImage("logo2.png");
 
             Vacant vacant3 = new Vacant();
             vacant3.setId(3);
@@ -49,9 +49,21 @@ public class VacantServiceImp implements IVacantService {
             vacant3.setActive(Boolean.TRUE);
             vacant3.setHighlighted(1);
 
+            Vacant vacant4 = new Vacant();
+            vacant4.setId(4);
+            vacant4.setName("C++ game developer");
+            vacant4.setDescription("Game programer with OpenGL experience");
+            vacant4.setSalary(2000.0);
+            vacant4.setPublicationDate(simpleDateFormat.parse("02-06-2020"));
+            vacant4.setActive(Boolean.TRUE);
+            vacant4.setHighlighted(0);
+            vacant4.setImage("logo4.png");
+
+
             vacantList.add(vacant1);
             vacantList.add(vacant2);
             vacantList.add(vacant3);
+            vacantList.add(vacant4);
         } catch (ParseException e) {
             logger.error(e.getMessage());
         }

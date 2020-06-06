@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
+    <meta charset="utf-8">
+    <title>Vacants App | Application for publishing job offers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
 </head>
 <body>
-<div>
-    <h1>Welcome</h1>
-    <h2>Job offer</h2>
-
-    <h3 th:text="'Job title: ' + ${name}"></h3>
-    <h3 th:text="'Salary: ' + ${salary}"></h3>
-    <h3 th:text="'Publication date: ' + ${publicationDate}"></h3>
-    <h3 th:text="'Active: ' + ${active}"></h3>
-</div>
+<header th:insert="fragments/menu :: principal-menu"></header>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Find the job you're looking for!</h3>
+            You can search by category and description.
+            <form class="form-inline">
+                <input type="text" class="form-control mb-3" id="exampleFormControlInput1"
+                       placeholder="Type your search">&nbsp;
+                <select class="custom-select custom-select mb-3">
+                    <option selected>Select a category</option>
+                    <option value="1">Sales</option>
+                    <option value="2">Accounting</option>
+                    <option value="3">Transport</option>
+                    <option value="4">Computing</option>
+                    <option value="5">Building</option>
+                </select>&nbsp;
+                <button type="submit" class="btn btn-primary mb-3">Search</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h2 class="font-weight-bold text-center text-capitalize">Highlighted</h2>
+        <hr>
+        <div class="row" th:each="vacant : ${vacantList}">
+            <div class="col-md-3">
+                <img class="rounded mx-auto d-block" th:src="@{/images/{img} (img=${vacant.image} ) }"
+                     alt="Generic placeholder image" width="220" height="220">
+            </div>
+            <div class="col-md-9">
+                <h2 th:text="${vacant.name}"></h2>
+                <h6 class="card-title"><strong>Category: </strong> <span></span></h6>
+                <h6 class="card-title"><strong>Published: </strong> <span th:text="${vacant.publicationDate}"></span>
+                </h6>
+                <p th:text="${vacant.description}"></p>
+                <p><a class="btn btn-secondary" th:href="@{/vacants/view/{id} (id=${vacant.id})  }" role="button">
+                    Details
+                </a></p>
+                <p><a class="btn btn-danger" th:href="@{/vacants/delete(id=${vacant.id})}" role="button">
+                    Delete
+                </a></p>
+            </div>
+        </div>
+        <hr>
+        <p><a class="btn btn-primary" th:href="@{/vacants/create}" role="button">
+            Create
+        </a></p>
+    </div>
+</main>
+<footer th:insert="fragments/footer :: footer" class="footer"></footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -1,34 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Vacant List</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Vacants App | Application for publishing job offers</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <img th:src="@{/images/logo.png}" alt="Jobs Logo" width="50px" height="50px">
-    <h1 class="text-primary">Vancants</h1>
-    <br>
-    <h3 th:text="'ID: ' + ${vacant.id}"></h3>
-    <h3 th:text="'Name: ' + ${vacant.name}"></h3>
-    <h3 th:text="'Description: ' + ${vacant.description}"></h3>
-    <h3 th:text="'Salary: ' + ${vacant.salary}"></h3>
-    <h3 th:text="'Publication date: ' + ${vacant.publicationDate}"></h3>
-    <a href="/vacants/">
-        <button type="button" class="btn btn-primary">Return</button>
-    </a>
-</div>
+<header th:insert="fragments/menu :: principal-menu"></header>
 
-<script src="/js/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="/js/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+<main role="main">
+    <hr>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+                <img class="rounded mx-auto d-block" th:src="@{/images/{img} (img=${vacant.image}) }"
+                     alt="Generic placeholder image" width="220" height="220">
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <h4 class="card-header">Aply to: <strong th:text="${vacant.name}"></strong></h4>
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Category: </strong> <span></span></h5>
+                        <h6 class="card-title"><strong>Published: </strong> <span
+                                th:text="${vacant.publicationDate}"> </span>
+                        </h6>
+                        <h6 class="card-title"><strong>Salary offered: </strong><span
+                                th:text="${vacant.salary}"></span></h6>
+                        <p class="card-text" th:text="${vacant.description}"></p>
+                        <div class="card bg-light mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Details of job offer</h5>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="#" role="button"
+                           title="I whant to apply to this job offer.">
+                            <i class="fas fa-file" aria-hidden="true"></i>
+                            Apply
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:insert="fragments/footer :: footer" class="footer"></footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

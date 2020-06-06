@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Job Detail</title>
+    <meta charset="utf-8">
+    <title>Vacants App | Application for publishing job offers</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/static/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/static/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/static/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
 </head>
 <body>
-<div>
-    <h1 th:text="'Job title: ' + ${vacant.name}"></h1>
-    <h1 th:text="'Job description: ' + ${vacant.description}"></h1>
-    <h1 th:text="'Job salary: ' + ${vacant.salary}"></h1>
-</div>
+<header th:insert="fragments/menu :: principal-menu"></header>
+<main role="main">
+    <div class="container">
+        <img th:src="@{/static/images/logo.png}" alt="Jobs Logo" width="50px" height="50px">
+        <h1 class="text-primary">Vancants</h1>
+        <br>
+        <h3 th:text="'ID: ' + ${vacant.id}"></h3>
+        <h3 th:text="'Name: ' + ${vacant.name}"></h3>
+        <h3 th:text="'Description: ' + ${vacant.description}"></h3>
+        <h3 th:text="'Salary: ' + ${vacant.salary}"></h3>
+        <h3 th:text="'Publication date: ' + ${vacant.publicationDate}"></h3>
+        <a href="/">
+            <button type="button" class="btn btn-primary">Return</button>
+        </a>
+    </div>
+</main>
+
+<footer th:insert="fragments/footer :: footer" class="footer"></footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
