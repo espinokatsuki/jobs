@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,7 +53,11 @@ public class VacantController {
     }
 
     @PostMapping("/save")
-    public String save(Vacant vacant) {
+    public String save(Vacant vacant, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(objectError -> logger.error(objectError.getDefaultMessage()));
+            return "vacant/create";
+        }
         vacantService.save(vacant);
         logger.info("Vacant saved {}", vacant);
         return "home";
