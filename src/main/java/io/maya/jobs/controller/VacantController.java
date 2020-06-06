@@ -24,6 +24,13 @@ public class VacantController {
     @Autowired
     private IVacantService vacantService;
 
+    @GetMapping("/index")
+    public String listAllVacants(Model model) {
+        List<Vacant> vacantList = vacantService.getAll();
+        model.addAttribute("vacantList", vacantList);
+        return "vacant/index";
+    }
+
     @GetMapping("/view/{id}")
     public String getById(@PathVariable("id") int id, Model model) {
         Vacant vacant = vacantService.getById(id);
@@ -33,17 +40,9 @@ public class VacantController {
     }
 
     @GetMapping("/delete")
-    public String deleteById(@RequestParam("id") int id, Model model) {
-        List<Vacant> vacantList = vacantService.getAll();
-        for (Vacant vacant :
-                vacantList) {
-            if (vacant.getId() == id) {
-                model.addAttribute("id", id);
-                logger.info("Vacant {} deleted: {}", id, vacant);
-                vacantList.remove(vacant);
-                break;
-            }
-        }
+    public String deleteById(@RequestParam("id") int id) {
+        vacantService.deleteById(id);
+        logger.info("Vacant deleted with id {}", id);
         return "vacant/delete";
     }
 
@@ -54,8 +53,8 @@ public class VacantController {
 
     @PostMapping("/save")
     public String save(Vacant vacant) {
-        logger.info("Vacant saved {}", vacant);
         vacantService.save(vacant);
+        logger.info("Vacant saved {}", vacant);
         return "home";
     }
 

@@ -10,4 +10,6 @@ public interface IVacantService {
     Vacant getById(Integer id);
 
     void save(Vacant vacant);
+
+    void deleteById(Integer id);
 }

@@ -29,6 +29,7 @@ public class VacantServiceImp implements IVacantService {
             vacant1.setActive(Boolean.TRUE);
             vacant1.setHighlighted(1);
             vacant1.setImage("logo1.png");
+            vacant1.setStatus("Created");
 
             Vacant vacant2 = new Vacant();
             vacant2.setId(2);
@@ -39,6 +40,7 @@ public class VacantServiceImp implements IVacantService {
             vacant2.setActive(Boolean.TRUE);
             vacant2.setHighlighted(0);
             vacant2.setImage("logo2.png");
+            vacant2.setStatus("Approved");
 
             Vacant vacant3 = new Vacant();
             vacant3.setId(3);
@@ -48,6 +50,7 @@ public class VacantServiceImp implements IVacantService {
             vacant3.setPublicationDate(simpleDateFormat.parse("01-06-2020"));
             vacant3.setActive(Boolean.TRUE);
             vacant3.setHighlighted(1);
+            vacant3.setStatus("Deleted");
 
             Vacant vacant4 = new Vacant();
             vacant4.setId(4);
@@ -58,7 +61,7 @@ public class VacantServiceImp implements IVacantService {
             vacant4.setActive(Boolean.TRUE);
             vacant4.setHighlighted(0);
             vacant4.setImage("logo4.png");
-
+            vacant4.setStatus("Created");
 
             vacantList.add(vacant1);
             vacantList.add(vacant2);
@@ -90,6 +93,22 @@ public class VacantServiceImp implements IVacantService {
     @Override
     public void save(Vacant vacant) {
         vacantList.add(vacant);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        try {
+            for (Vacant vacant :
+                    vacantList) {
+                if (vacant.getId() == id) {
+                    logger.info("Vacant {} deleted: {}", id, vacant);
+                    vacantList.remove(vacant);
+                    break;
+                }
+            }
+        } catch (IndexOutOfBoundsException exception) {
+            logger.error("Vacant with id: {} not found", id);
+        }
     }
 
 
