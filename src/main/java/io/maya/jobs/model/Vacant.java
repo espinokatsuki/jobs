@@ -12,6 +12,8 @@ public class Vacant {
     private Date publicationDate;
     private Integer highlighted;
     private String image = "no-image.png";
+    private String status;
+    private String details;
 
     public Integer getId() {
         return id;
@@ -77,6 +79,22 @@ public class Vacant {
         this.image = image;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
     @Override
     public String toString() {
         return "Vacant{" +
@@ -88,6 +106,8 @@ public class Vacant {
                 ", publicationDate=" + publicationDate +
                 ", highlighted=" + highlighted +
                 ", image='" + image + '\'' +
+                ", status='" + status + '\'' +
+                ", details='" + details + '\'' +
                 '}';
     }
 }
