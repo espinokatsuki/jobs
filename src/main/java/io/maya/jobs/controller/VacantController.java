@@ -5,10 +5,14 @@ import io.maya.jobs.service.IVacantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -50,8 +54,15 @@ public class VacantController {
 
     @PostMapping("/save")
     public String save(Vacant vacant) {
-        System.out.println(vacant);
-        return "vacant/added";
+        logger.info("Vacant saved {}", vacant);
+        vacantService.save(vacant);
+        return "home";
+    }
+
+    @InitBinder
+    private void initBinder(WebDataBinder webDataBinder) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(simpleDateFormat, false));
     }
 
 }

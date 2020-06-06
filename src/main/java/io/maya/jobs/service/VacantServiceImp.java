@@ -87,5 +87,10 @@ public class VacantServiceImp implements IVacantService {
         return vacant;
     }
 
+    @Override
+    public void save(Vacant vacant) {
+        vacantList.add(vacant);
+    }
+
 
 }
