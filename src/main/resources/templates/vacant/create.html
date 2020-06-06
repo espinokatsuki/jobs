@@ -25,11 +25,11 @@
                 <form th:action="@{/vacants/save}" method="post">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description">
+                        <input type="text" class="form-control" id="description" name="description">
                     </div>
                     <div class="form-group">
                         <label for="categoryFormControl">Category</label>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="statusFormControl">Status</label>
-                        <select class="form-control" id="statusFormControl">
+                        <select class="form-control" id="statusFormControl" name="status">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -53,22 +53,28 @@
                     </div>
                     <div class="form-group">
                         <label for="date">Publication date</label>
-                        <input type="text" class="form-control" name="date" id="date"
+                        <input type="text" class="form-control" name="publicationDate" id="date"
                                placeholder="Publication date" required="required">
                     </div>
                     <div class="form-group">
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio1">Highlighted</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="highlighted" id="highlighted1"
+                                   value="1" checked>
+                            <label class="form-check-label" for="highlighted1">
+                                Highlighted
+                            </label>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio2">Not highlighted</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="highlighted" id="highlighted2"
+                                   value="0">
+                            <label class="form-check-label" for="highlighted2">
+                                Non highlighted
+                            </label>
                         </div>
                     </div>
                     <div class="input-group">
                         <input type="text" class="form-control"
-                               aria-label="Dollar amount (with dot and two decimal places)">
+                               aria-label="Dollar amount (with dot and two decimal places)" name="salary">
                         <div class="input-group-append">
                             <span class="input-group-text">$</span>
                             <span class="input-group-text">0.00</span>
@@ -80,7 +86,7 @@
                     </div>
                     <div class="form-group">
                         <label for="details">Details</label>
-                        <textarea class="form-control" id="details" rows="5"></textarea>
+                        <textarea class="form-control" id="details" rows="5" name="details"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

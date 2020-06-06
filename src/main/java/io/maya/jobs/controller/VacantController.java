@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -50,7 +49,17 @@ public class VacantController {
     }
 
     @PostMapping("/save")
-    public String save() {
+    public String save(@RequestParam("name") String name, @RequestParam("description") String description,
+                       @RequestParam("status") Integer status, @RequestParam("publicationDate") String publicationDate,
+                       @RequestParam("highlighted") Integer highlighted, @RequestParam("salary") Double salary,
+                       @RequestParam("details") String details) {
+        System.out.println(name);
+        System.out.println(description);
+        System.out.println(status);
+        System.out.println(publicationDate);
+        System.out.println(highlighted);
+        System.out.println(salary);
+        System.out.println(details);
         return "vacant/added";
     }
 
